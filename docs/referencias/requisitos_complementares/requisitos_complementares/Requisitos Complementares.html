@@ -1,0 +1,483 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Requisitos Complementares Nilseu Padilha (resumo do cap&#237;tulo 7 - &nbsp;Scott W. Ambler(2004) - The Object Primer - Agile Model-Driven Development With Uml 2.0 3rd ed. - Cambridge University Press)</title>
+<style type="text/css">
+    li { list-style: none;  margin: 0; }
+    p { margin: 0; }
+    span.foldopened { color: white; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: visible;
+    cursor:pointer; }
+
+
+    span.foldclosed { color: #666666; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: hidden;
+    cursor:pointer; }
+
+    span.foldspecial { color: #666666; font-size: xx-small; border-style: none solid solid none;
+    border-color: #CCCCCC; border-width: 1; font-family: sans-serif; padding: 0em 0.1em 0em 0.1em; background: #e0e0e0;
+    cursor:pointer; }
+
+    span.l { color: red; font-weight: bold; }
+
+    a.mapnode:link {text-decoration: none; color: black; }
+    a.mapnode:visited {text-decoration: none; color: black; }
+    a.mapnode:active {text-decoration: none; color: black; }
+    a.mapnode:hover {text-decoration: none; color: black; background: #eeeee0; }
+
+</style>
+<!-- ^ Position is not set to relative / absolute here because of Mozilla -->
+</head>
+<body>
+
+<script type="text/javascript">
+   // Here we implement folding. It works fine with MSIE5.5, MSIE6.0 and
+   // Mozilla 0.9.6.
+
+   if (document.layers) {
+      //Netscape 4 specific code
+      pre = 'document.';
+      post = ''; }
+   if (document.getElementById) {
+      //Netscape 6 specific code
+      pre = 'document.getElementById("';
+      post = '").style'; }
+   if (document.all) {
+      //IE4+ specific code
+      pre = 'document.all.';
+      post = '.style'; }
+
+function layer_exists(layer) {
+   try {
+      eval(pre + layer + post);
+      return true; }
+   catch (error) {
+      return false; }}
+
+function show_layer(layer) {
+   eval(pre + layer + post).position = 'relative'; 
+   eval(pre + layer + post).visibility = 'visible'; }
+
+function hide_layer(layer) {
+   eval(pre + layer + post).visibility = 'hidden';
+   eval(pre + layer + post).position = 'absolute'; }
+
+function hide_folder(folder) {
+    hide_folding_layer(folder)
+    show_layer('show'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function show_folder(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_layer('show'+folder+'_'+i); }
+}
+function show_folder_completely(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+
+
+function hide_folding_layer(folder) {
+   var i;
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folding_layer(folder+'_'+i); }
+
+   hide_layer('hide'+folder);
+   hide_layer('show'+folder);
+   hide_layer('fold'+folder);
+
+   scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function fold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folder(folder+'_'+i); }
+}
+
+function unfold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+</script>
+<SPAN class="foldspecial" onclick="fold_document()">All +</SPAN>
+<SPAN class="foldspecial" onclick="unfold_document()">All -</SPAN>
+<span style="color: #000000;font-size: 166%;font-family: SansSerif, sans-serif; ">
+    <p style="text-align: center">
+      Requisitos Complementares
+    </p>
+    <p style="text-align: center">
+      Nilseu Padilha
+    </p>
+    <p style="text-align: center">
+      <font size="0">(resumo do cap&#237;tulo 7 -&#160; </font>
+    </p>
+    <p style="text-align: center">
+      <font size="0">Scott W. Ambler(2004) - </font>
+    </p>
+    <p style="text-align: center">
+      <font size="0">The Object Primer - </font>
+    </p>
+    <p style="text-align: center">
+      <font size="0">Agile Model-Driven Development With Uml 2.0 3rd ed. - </font>
+    </p>
+    <p style="text-align: center">
+      <font size="0">Cambridge University Press)</font>
+    </p>
+  </span>
+<ul><li><span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">Regras de Neg&#xf3;cio</span>
+<ul><li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Defini&#xe7;&#xe3;o</span>
+<ul><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Uma RN define ou restringe um aspecto do neg&#xf3;cio que</span>
+<ul><li><span style="color: #111111;font-family: SansSerif, sans-serif; ">afirma a estrutura do neg&#xf3;cio</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; ">influencia o comportamenteo do neg&#xf3;cio</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Tipos</span>
+<ul><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Controle de acesso</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">C&#xe1;lculos Comerciais</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Pol&#xed;ticas da organiza&#xe7;&#xe3;o</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Exemplos - Especifica&#xe7;&#xe3;o 1</span>
+<ul><li><span style="color: #111111;font-family: SansSerif, sans-serif; ">
+    <div>
+      <div class="chapter">
+        <div class="section">
+          <div class="miscfigure">
+            <div class="miscfigure-informalexample">
+              <div class="informaltable">
+                <table width="100%" border="1">
+                  <tr valign="top">
+                    <td width="100%" class="td" align="left">
+                      <ul class="itemizedlist">
+                        <li class="first-listitem">
+                          <p class="table-para">
+                            RN123 Professores titulares podem administrar notas dos alunos.
+                          </p>
+                        </li>
+                        <li class="listitem">
+                          <p class="table-para">
+                            RN124 Monitores autorizados por Professores titulares podem administrar notas dos alunos.
+                          </p>
+                        </li>
+                        <li class="listitem">
+                          <p class="table-para">
+                            RN177 Tabela de convers&#227;o entre notas num&#233;ricas e conceitos.
+                          </p>
+                        </li>
+                        <li class="listitem">
+                          <p class="table-para">
+                            RN245 Todos os programadas de mestrado devem englobar o desenvolvimento de uma disserta&#231;&#227;o
+                          </p>
+                          <p class="table-para">
+                            .
+                          </p>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </span>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Regra de Neg&#xf3;cio - Especificac&#xe3;o Completa</span>
+<ul><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Exemplo</span>
+<ul><li><span style="color: #111111;font-family: SansSerif, sans-serif; ">
+    <div>
+      <div class="chapter">
+        <div class="section">
+          <div class="miscfigure">
+            <div class="miscfigure-informalexample">
+              <div class="informaltable">
+                <table width="100%" border="1">
+                  <tr valign="top">
+                    <td width="24%" class="td" align="left">
+                      <p class="table-para">
+                        <b class="bold">Nome:</b>
+                      </p>
+                    </td>
+                    <td width="76%" class="td" align="left">
+                      <p class="table-para">
+                        Professores titulares devem administrar notas dos alunos
+                      </p>
+                    </td>
+                  </tr>
+                  <tr valign="top">
+                    <td width="24%" class="td" align="left">
+                      <p class="table-para">
+                        <b class="bold">Identificador:</b>
+                      </p>
+                    </td>
+                    <td width="76%" class="td" align="left">
+                      <p class="table-para">
+                        RN123
+                      </p>
+                    </td>
+                  </tr>
+                  <tr valign="top">
+                    <td width="24%" class="td" align="left">
+                      <p class="table-para">
+                        <b class="bold">Descri&#231;&#227;o:</b>
+                      </p>
+                    </td>
+                    <td width="76%" class="td" align="left">
+                      <p class="table-para">
+                        Apenas professores titulares podem inserir, modificar e excluir notas de alunos nos semin&#225;rios que ele lecionou. Isto pode ser feito duranet o per&#237;odo de atividade do semin&#225;rio apenas.
+                      </p>
+                    </td>
+                  </tr>
+                  <tr valign="top">
+                    <td width="24%" class="td" align="left">
+                      <p class="table-para">
+                        <b class="bold">Exemplo:</b>
+                      </p>
+                    </td>
+                    <td width="76%" class="td" align="left">
+                      <p class="table-para">
+                        Dr. Bruce, professor de&#160;&#160;&quot;Biologia 301 - Uso avan&#231;ado de Radia&#231;&#227;o Gama&quot; pode registrar as notas de todos os alunos do curso, mas n&#227;o dos alunos matriculados em &quot;Biologia 302 Efeitos da radia&#231;&#227;o em aracn&#237;deos,&quot; lecionado pelo Dr. Parker.
+                      </p>
+                    </td>
+                  </tr>
+                  <tr valign="top">
+                    <td width="24%" class="td" align="left">
+                      <p class="table-para">
+                        <b class="bold">Fonte:</b>
+                      </p>
+                    </td>
+                    <td width="76%" class="td" align="left">
+                      <p class="table-para">
+                        Estatuto da Universidade: 14 de agosto de&#160;&#160;2000
+                      </p>
+                    </td>
+                  </tr>
+                  <tr valign="top">
+                    <td width="24%" class="td" align="left">
+                      <p class="table-para">
+                        <b class="bold">Regras Relacionadas:</b>
+                      </p>
+                    </td>
+                    <td width="76%" class="td" align="left">
+                      <p class="table-para">
+                        RN12 Qualificar Professor Titular, RN65 Per&#237;odo de Atividade de Cursos; RN200 Modificac&#227;o de Notas Finais de Alunos
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </span>
+</li>
+</ul>
+</li>
+<li><span id="show1_1" class="foldclosed" onClick="show_folder('1_1')" style="POSITION: absolute">+</span> <span id="hide1_1" class="foldopened" onClick="hide_folder('1_1')">-</span>
+<span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Se&#xe7;&#xf5;es de uma RN</span>
+<ul id="fold1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;font-family: SansSerif, sans-serif; ">Nome</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; ">Descri&#xe7;&#xe3;o</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; ">Exemplo(opcional)</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; ">Fonte(opcional)</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; ">Regras relacionadas(opcional)</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2" class="foldclosed" onClick="show_folder('1_2')" style="POSITION: absolute">+</span> <span id="hide1_2" class="foldopened" onClick="hide_folder('1_2')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Qualidades de uma RN</span>
+<ul id="fold1_2" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">devem ser escritas e fazer-se expl&#xed;citas</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">devem ser expressas em linguagem simples</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">existem independentemente de procedimentos e fluxos de trabalho</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">baseadas em fatos, e fatos s&#xe3;o baseados em conceitos representados por termos (gloss&#xe1;rio)</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">guiar ou influeciar um comportamento desejado</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">motivado por fatores de neg&#xf3;cio indentific&#xe1;veis e importantes</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">acess&#xed;vel por diversas partes</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">provir de uma &#xfa;nica fonte</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">especificado prlo stakeholder com conhecimento relevante</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">ser gerenciado</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3" class="foldclosed" onClick="show_folder('1_3')" style="POSITION: absolute">+</span> <span id="hide1_3" class="foldopened" onClick="hide_folder('1_3')">-</span>
+<span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">Gloss&#xe1;rio</span>
+<ul id="fold1_3" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Defini&#xe7;&#xe3;o de termos</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_4" class="foldclosed" onClick="show_folder('1_4')" style="POSITION: absolute">+</span> <span id="hide1_4" class="foldopened" onClick="hide_folder('1_4')">-</span>
+<span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">FURPS
+    <p>
+      Os Requisitos Suplementares s&#227;o identificados seguindo-se o esquema FURPS+ de classifica&#231;&#227;o de requisitos. O nome do esquema &#233; um acr&#244;nimo para:
+    </p>
+  </span>
+<ul id="fold1_4" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Functionality (Funcionalidade)</span>
+<ul><li><p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">representa todo aspecto funcional do software, ou seja seus requisitos. &#xc9; uma categoria com diversas subcategorias que variam de acordo com a aplica&#xe7;&#xe3;o. Sua medi&#xe7;&#xe3;o considera, principalmente, o cumprimento dos requesitos especificados.</span>
+</li>
+</ul>
+</li>
+<li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Usability (Usabilidade)</span>
+<ul><li><p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">&#xe9; o atributo que avalia a interface com o usu&#xe1;rio. Possui diversas subcategorias, entre elas: preven&#xe7;&#xe3;o de erros; est&#xe9;tica e design; ajudas (Help) e documenta&#xe7;&#xe3;o; consist&#xea;ncia e padr&#xf5;es.</span>
+</li>
+</ul>
+</li>
+<li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Reliability (Confiabilidade)</span>
+<ul><li><p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">refere-se a integridade, conformidade e interoperabilidade do software. Os requisitos a serem considerados s&#xe3;o: freq&#xfc;&#xea;ncia e gravidade de falha; possibilidade de recupera&#xe7;&#xe3;o; possibilidade de previs&#xe3;o; exatid&#xe3;o; tempo m&#xe9;dio entre falhas</span>
+</li>
+</ul>
+</li>
+<li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Performance (Desempenho)</span>
+<ul><li><p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">avalia os requisitos de desempenho do software. Podendo usar como medida diversos aspectos, entre eles: tempo de resposta, consumo de mem&#xf3;ria, utiliza&#xe7;&#xe3;o da CPU, capacidade de carga e disponibilidade da aplica&#xe7;&#xe3;o.</span>
+</li>
+</ul>
+</li>
+<li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Supportability (Sustentabilidade)</span>
+<ul><li><p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">os requisitos de suportabilidade agrupam v&#xe1;rias caracter&#xed;sticas, como: testabilidade, adaptabilidade, manutenibilidade, compatibilidade, configurabilidade, instalabilidade, escalabilidade, localizabilidade entre outros.</span>
+</li>
+</ul>
+</li>
+<li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">+ (s&#xed;mbolo  mais")</span>
+<ul><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Requisitos de design (desenho)</span>
+<ul><li><p><span style="color: #111111;font-family: SansSerif, sans-serif; ">Um requisito de design, freq&#xfc;entemente chamado de uma restri&#xe7;&#xe3;o de design, especifica ou restringe o design de um sistema. Exemplos podem incluir: linguagens de programa&#xe7;&#xe3;o, processo de software, uso de ferramentas de desenvolvimento, biblioteca de classes, etc.</span>
+</li>
+</ul>
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Requisitos de implementa&#xe7;&#xe3;o</span>
+<ul><li><p><span style="color: #111111;font-family: SansSerif, sans-serif; ">Um requisito de implementa&#xe7;&#xe3;o especifica ou restringe o c&#xf3;digo ou a constru&#xe7;&#xe3;o de um sistema. Como exemplos, podemos citar:</span>
+<ul><li><span style="color: #000000;font-family: SansSerif, sans-serif; ">padr&#xf5;es obrigat&#xf3;rios;</span>
+
+</li>
+<li><span style="color: #000000;font-family: SansSerif, sans-serif; ">linguagens de implementa&#xe7;&#xe3;o;</span>
+
+</li>
+<li><span style="color: #000000;font-family: SansSerif, sans-serif; ">pol&#xed;ticas de integridade de banco de dados;</span>
+
+</li>
+<li><span style="color: #000000;font-family: SansSerif, sans-serif; ">limites de recursos;</span>
+
+</li>
+<li><span style="color: #000000;font-family: SansSerif, sans-serif; ">ambientes operacionais.</span>
+
+</li>
+
+</ul></li>
+</ul>
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Requisitos de interface</span>
+<ul><li><span style="color: #111111;font-family: SansSerif, sans-serif; ">especifica ou restringe as funcionalidades inerentes a interface do sistema com usu&#xe1;rio.</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Requisitos f&#xed;sicos</span>
+<ul><li><p><span style="color: #111111;font-family: SansSerif, sans-serif; ">especifica uma limita&#xe7;&#xe3;o f&#xed;sica pelo hardware utilizado, por exemplo: material, forma, tamanho ou peso. Podendo representar requisitos de hardware, como as configura&#xe7;&#xf5;es f&#xed;sicas de rede obrigat&#xf3;rias.</span>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_5" class="foldclosed" onClick="show_folder('1_5')" style="POSITION: absolute">+</span> <span id="hide1_5" class="foldopened" onClick="hide_folder('1_5')">-</span>
+<span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">SRS</span>
+<ul id="fold1_5" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Software Requirements Specification</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul><SCRIPT type="text/javascript">
+fold_document();
+</SCRIPT>
+</body>
+</html>

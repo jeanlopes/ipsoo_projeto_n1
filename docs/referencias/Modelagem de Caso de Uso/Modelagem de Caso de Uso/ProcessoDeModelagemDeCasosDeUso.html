@@ -1,0 +1,927 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Processo de Modelagem de Casos de Uso Nilseu Padilha (resumo do cap&#237;tulo 5 - &nbsp;Scott W. Ambler(2004) - The Object Primer - Agile Model-Driven Development With Uml 2.0 3rd ed. - Cambridge University Press)</title>
+<style type="text/css">
+    li { list-style: none;  margin: 0; }
+    p { margin: 0; }
+    span.foldopened { color: white; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: visible;
+    cursor:pointer; }
+
+
+    span.foldclosed { color: #666666; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: hidden;
+    cursor:pointer; }
+
+    span.foldspecial { color: #666666; font-size: xx-small; border-style: none solid solid none;
+    border-color: #CCCCCC; border-width: 1; font-family: sans-serif; padding: 0em 0.1em 0em 0.1em; background: #e0e0e0;
+    cursor:pointer; }
+
+    span.l { color: red; font-weight: bold; }
+
+    a.mapnode:link {text-decoration: none; color: black; }
+    a.mapnode:visited {text-decoration: none; color: black; }
+    a.mapnode:active {text-decoration: none; color: black; }
+    a.mapnode:hover {text-decoration: none; color: black; background: #eeeee0; }
+
+</style>
+<!-- ^ Position is not set to relative / absolute here because of Mozilla -->
+</head>
+<body>
+
+<script type="text/javascript">
+   // Here we implement folding. It works fine with MSIE5.5, MSIE6.0 and
+   // Mozilla 0.9.6.
+
+   if (document.layers) {
+      //Netscape 4 specific code
+      pre = 'document.';
+      post = ''; }
+   if (document.getElementById) {
+      //Netscape 6 specific code
+      pre = 'document.getElementById("';
+      post = '").style'; }
+   if (document.all) {
+      //IE4+ specific code
+      pre = 'document.all.';
+      post = '.style'; }
+
+function layer_exists(layer) {
+   try {
+      eval(pre + layer + post);
+      return true; }
+   catch (error) {
+      return false; }}
+
+function show_layer(layer) {
+   eval(pre + layer + post).position = 'relative'; 
+   eval(pre + layer + post).visibility = 'visible'; }
+
+function hide_layer(layer) {
+   eval(pre + layer + post).visibility = 'hidden';
+   eval(pre + layer + post).position = 'absolute'; }
+
+function hide_folder(folder) {
+    hide_folding_layer(folder)
+    show_layer('show'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function show_folder(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_layer('show'+folder+'_'+i); }
+}
+function show_folder_completely(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+
+
+function hide_folding_layer(folder) {
+   var i;
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folding_layer(folder+'_'+i); }
+
+   hide_layer('hide'+folder);
+   hide_layer('show'+folder);
+   hide_layer('fold'+folder);
+
+   scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function fold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folder(folder+'_'+i); }
+}
+
+function unfold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+</script>
+<SPAN class="foldspecial" onclick="fold_document()">All +</SPAN>
+<SPAN class="foldspecial" onclick="unfold_document()">All -</SPAN>
+<a href="Modelagem%20de%20Caso%20de%20Uso.mm.html" target="_blank"><span class=l>~</span>&nbsp;<span style="color: #000000;font-size: 166%;font-family: SansSerif, sans-serif; ">
+    <p style="text-align: center">
+      Processo de Modelagem
+    </p>
+    <p style="text-align: center">
+      de Casos de Uso
+    </p>
+    <p style="text-align: center">
+      Nilseu Padilha
+    </p>
+    <p style="text-align: center">
+      <font size="1">(resumo do capítulo 5 -  </font>
+    </p>
+    <p style="text-align: center">
+      <font size="1">Scott W. Ambler(2004) - </font>
+    </p>
+    <p style="text-align: center">
+      <font size="1">The Object Primer - </font>
+    </p>
+    <p style="text-align: center">
+      <font size="1">Agile Model-Driven Development With Uml 2.0 3rd ed. - </font>
+    </p>
+    <p style="text-align: center">
+      <font size="1">Cambridge University Press)</font>
+    </p>
+  </span>
+</a>
+<ul><li><span id="show1_1" class="foldclosed" onClick="show_folder('1_1')" style="POSITION: absolute">+</span> <span id="hide1_1" class="foldopened" onClick="hide_folder('1_1')">-</span>
+<span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">1 - In&#xed;cio &#xc1;gil</span>
+<ul id="fold1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_1_1" class="foldclosed" onClick="show_folder('1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_1_1" class="foldopened" onClick="hide_folder('1_1_1')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">1 - Diagramas no Quadro Branco</span>
+<ul id="fold1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li><a href="ProcessoDeModelagemDeCasosDeUso_6822375130196821012.png" target="_blank"><span class=l>~</span>&nbsp;<span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">ProcessoDeModelagemDeCasosDeUso_6822375130196821012.png</span>
+</a>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_2" class="foldclosed" onClick="show_folder('1_1_2')" style="POSITION: absolute">+</span> <span id="hide1_1_2" class="foldopened" onClick="hide_folder('1_1_2')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">2 - Esbo&#xe7;ar no papel cada caso de uso</span>
+<ul id="fold1_1_2" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Apenas informa&#xe7;&#xe3;o suficiente</span>
+
+</li>
+<li><span id="show1_1_2_1" class="foldclosed" onClick="show_folder('1_1_2_1')" style="POSITION: absolute">+</span> <span id="hide1_1_2_1" class="foldopened" onClick="hide_folder('1_1_2_1')">-</span>
+<span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Martricular Aluno em Semin&#xe1;rio</span>
+<ul id="fold1_1_2_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;font-family: SansSerif, sans-serif; ">Aluno deve estar matriculado na universidade</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; ">Deve prover uma lista de semin&#xe1;rios</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; ">Deve checar pr&#xe9;-requisitos</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; ">Matricula apenas se tiver vagas</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2" class="foldclosed" onClick="show_folder('1_2')" style="POSITION: absolute">+</span> <span id="hide1_2" class="foldopened" onClick="hide_folder('1_2')">-</span>
+<span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">2 - Diagramas de Caso De Uso Essenciais</span>
+<ul id="fold1_2" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_2_1" class="foldclosed" onClick="show_folder('1_2_1')" style="POSITION: absolute">+</span> <span id="hide1_2_1" class="foldopened" onClick="hide_folder('1_2_1')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Elementos</span>
+<ul id="fold1_2_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Casos de uso</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Atores</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Associa&#xe7;&#xf5;es</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Caixa - Limite do Sistema (opcional)</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Pacotes (opcional)</span>
+
+</li>
+<li><span id="show1_2_1_1" class="foldclosed" onClick="show_folder('1_2_1_1')" style="POSITION: absolute">+</span> <span id="hide1_2_1_1" class="foldopened" onClick="hide_folder('1_2_1_1')">-</span>
+<span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Diagrama de Caso de Uso</span>
+<ul id="fold1_2_1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_2_1_1_1" class="foldclosed" onClick="show_folder('1_2_1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_2_1_1_1" class="foldopened" onClick="hide_folder('1_2_1_1_1')">-</span>
+<span style="color: #111111;font-family: SansSerif, sans-serif; ">Diagrama1</span>
+<ul id="fold1_2_1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li><a href="ProcessoDeModelagemDeCasosDeUso_8141521267238591597.png" target="_blank"><span class=l>~</span>&nbsp;<span style="color: #000000;font-family: SansSerif, sans-serif; ">ProcessoDeModelagemDeCasosDeUso_8141521267238591597.png</span>
+</a>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2_1_1_2" class="foldclosed" onClick="show_folder('1_2_1_1_2')" style="POSITION: absolute">+</span> <span id="hide1_2_1_1_2" class="foldopened" onClick="hide_folder('1_2_1_1_2')">-</span>
+<span style="color: #111111;font-family: SansSerif, sans-serif; ">Diagrama2</span>
+<ul id="fold1_2_1_1_2" style="POSITION: relative; VISIBILITY: visible;"><li><a href="ProcessoDeModelagemDeCasosDeUso_2609718979139591235.png" target="_blank"><span class=l>~</span>&nbsp;<span style="color: #000000;font-family: SansSerif, sans-serif; ">ProcessoDeModelagemDeCasosDeUso_2609718979139591235.png</span>
+</a>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2_2" class="foldclosed" onClick="show_folder('1_2_2')" style="POSITION: absolute">+</span> <span id="hide1_2_2" class="foldopened" onClick="hide_folder('1_2_2')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Recomenda&#xe7;&#xf5;es</span>
+<ul id="fold1_2_2" style="POSITION: relative; VISIBILITY: visible;"><li><p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">1 - Apenas casos de uso preliminares</span>
+<p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">2 - N&#xe3;o h&#xe1; depended&#xea;ncia temporal entre casos de uso</span>
+<p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">3 - Atores do Cliente envolcem-se em v&#xe1;rios casos de uso</span>
+<p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">4 - Casos de uso N&#xc3;O s&#xe3;o fun&#xe7;&#xf5;es</span>
+<p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">5 - N&#xe3;o h&#xe1; setas nas associa&#xe7;&#xf5;es</span>
+<p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">6 - Diagrama deve ser pequeno</span>
+<p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">7 - Casos de uso devem ser funcionalmente coesos</span>
+<p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">8 - Cada caso de Uso deve ser temporalmente coeso</span>
+<p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">9 - Casos de uso devem descrever algo de valor para o neg&#xf3;cio</span>
+<p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">10 - Todo ator deve estar envolvido envolvido com pelo menos um caso de uso e cada caso de uso deve estar envolvido com pelo menos um ator</span>
+<p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">11 - A&#xe7;&#xf5;es repetitivas n&#xe3;o precisam ser expressas em um &#xfa;nico caso de uso</span>
+<p><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">12 - Limite do sistema &#xe9; Opcional</span>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3" class="foldclosed" onClick="show_folder('1_3')" style="POSITION: absolute">+</span> <span id="hide1_3" class="foldopened" onClick="hide_folder('1_3')">-</span>
+<span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">3 - Identificando Atores</span>
+<ul id="fold1_3" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_1" class="foldclosed" onClick="show_folder('1_3_1')" style="POSITION: absolute">+</span> <span id="hide1_3_1" class="foldopened" onClick="hide_folder('1_3_1')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Quest&#xf5;es</span>
+<ul id="fold1_3_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Quem &#xe9; o principal cliente do sistema</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Quem obtem informa&#xe7;&#xf5;es do sistema</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Quem instala o sistema</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Quem opera o sistema</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Querm desliga o sistema</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Quais outros sistemas interagem com este sistema</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Algo acontece automaticamente por agendamento?</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Da onde o sistema obtem informa&#xe7;&#xf5;es</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_2" class="foldclosed" onClick="show_folder('1_3_2')" style="POSITION: absolute">+</span> <span id="hide1_3_2" class="foldopened" onClick="hide_folder('1_3_2')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Recomenda&#xe7;&#xf5;es</span>
+<ul id="fold1_3_2" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_2_1" class="foldclosed" onClick="show_folder('1_3_2_1')" style="POSITION: absolute">+</span> <span id="hide1_3_2_1" class="foldopened" onClick="hide_folder('1_3_2_1')">-</span>
+<span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Descrever brevemente cada ator</span>
+<ul id="fold1_3_2_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;font-family: SansSerif, sans-serif; ">Nome:</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; ">Descri&#xe7;&#xe3;o</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; ">Exemplos</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_4" class="foldclosed" onClick="show_folder('1_4')" style="POSITION: absolute">+</span> <span id="hide1_4" class="foldopened" onClick="hide_folder('1_4')">-</span>
+<span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">4 - Escrevendo Caso de Uso Essencial</span>
+<ul id="fold1_4" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_4_1" class="foldclosed" onClick="show_folder('1_4_1')" style="POSITION: absolute">+</span> <span id="hide1_4_1" class="foldopened" onClick="hide_folder('1_4_1')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Descri&#xe7;&#xe3;o</span>
+<ul id="fold1_4_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">As vezes conhecido como CASO DE USO DE NEG&#xd3;CIO</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Focado no PROCESSO de Neg&#xf3;cio</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_4_2" class="foldclosed" onClick="show_folder('1_4_2')" style="POSITION: absolute">+</span> <span id="hide1_4_2" class="foldopened" onClick="hide_folder('1_4_2')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Exemplo</span>
+<ul id="fold1_4_2" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">
+    <div>
+      <div class="chapter">
+        <div class="section">
+          <div class="section">
+            <div class="miscfigure">
+              <div class="miscfigure-informalexample">
+                <div class="informaltable">
+                  <table width="100%" border="1">
+                    <tr valign="top">
+                      <td align="left" colspan="2" class="td">
+                        <p class="table-para">
+                          <a name="352">
+</a><a name="beginpage.F6245266-8137-11D9-94C7-DF7A17B30D2E615068CC-2B0D-48E9-B1F8-D62021D66B01">
+</a>                        </p>
+                        <p class="table-para">
+                          <a name="beginpage.F6245266-8137-11D9-94C7-DF7A17B30D2E615068CC-2B0D-48E9-B1F8-D62021D66B01"><b class="bold">Matricular</b></a><b class="bold"> no Seminário</b>
+                        </p>
+                        <p class="table-para">
+                          ID: UC 17
+                        </p>
+                        <p class="table-para">
+                          <b class="bold">Pré-condições:</b>
+                        </p>
+                        <ul class="itemizedlist">
+                          <li class="first-listitem">
+                            <p class="table-para">
+                              O Aluno deve estar matriculado na universidade
+                            </p>
+                          </li>
+                        </ul>
+                        <p class="table-para">
+                          <b class="bold">Pos-condições:</b>
+                        </p>
+                        <ul class="itemizedlist">
+                          <li class="first-listitem">
+                            <p class="table-para">
+                              Nenhuma
+                            </p>
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr valign="top">
+                      <td align="left" width="30%" class="td">
+                        <p class="table-para">
+                          <b class="bold">Ator(es)</b>
+                        </p>
+                      </td>
+                      <td valign="bottom" align="left" width="70%" class="td">
+                        <p class="table-para">
+                          <b class="bold">Resposta</b>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr valign="top">
+                      <td align="left" width="30%" class="td">
+                        <p class="table-para">
+                          Estudante se identifica
+                        </p>
+                      </td>
+                      <td align="left" width="70%" class="td">
+                        <p class="table-para">
+                          Verifica elgibilidae para matrícula via <i><b>RN129 
+                          determinar eligibilidade para matricula</b></i>. 
+                          Indica semin;arios alternativos
+                        </p>
+                      </td>
+                    </tr>
+                    <tr valign="top">
+                      <td align="left" width="30%" class="td">
+                        <p class="table-para">
+                          Escolher seminário
+                        </p>
+                      </td>
+                      <td align="left" width="70%" class="td">
+                        <p class="table-para">
+                          Validar escolha  via <b>RN130 Determinar 
+                          Eligibilidade para Matricula</b> em um Seminário. 
+                          Valida agenda via <i><b>RN 143 Validar Agenda do ALuno</b></i> 
+                          do Seminário. Calcula taxas via <i><b>RN180 
+                          Calcular Taxas do Aluno</b></i> e <i><b>RN45 
+                          Calcular taxas do Seminário</b></i>. Exibir 
+                          resumo de taxas e soliciitar confirmação.
+                        </p>
+                        <p class="table-para">
+                          
+                        </p>
+                      </td>
+                    </tr>
+                    <tr valign="top">
+                      <td align="left" width="30%" class="td">
+                        <p class="table-para">
+                          Confirmar matrícula
+                        </p>
+                      </td>
+                      <td align="left" width="70%" class="td">
+                        <p class="table-para">
+                          Matricular estudante no seminário, adicionar taxas 
+                          para o carnê do aluno e Prover confirmação da 
+                          matrícula
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </span>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_5" class="foldclosed" onClick="show_folder('1_5')" style="POSITION: absolute">+</span> <span id="hide1_5" class="foldopened" onClick="hide_folder('1_5')">-</span>
+<span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">5 - Identificando Casos de Uso</span>
+<ul id="fold1_5" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_5_1" class="foldclosed" onClick="show_folder('1_5_1')" style="POSITION: absolute">+</span> <span id="hide1_5_1" class="foldopened" onClick="hide_folder('1_5_1')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Question&#xe1;rio</span>
+<ul id="fold1_5_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">O que os usu&#xe1;rios deste papel est&#xe3;o tentando cumprir?</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Para atender este papel, o que os usu&#xe1;rios devem estar habilitados a fazer?</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Quais s&#xe3;o as tarefas dos usu&#xe1;rios neste papel?</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">QUe informa&#xe7;&#xe3;o usu&#xe1;rios deste papel precisam examinar, criar ou mudar?</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">SObre o qu&#xea; usu&#xe1;rios neste papel devem ser informados?</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">O que os usu&#xe1;rios neste papel devem informar ao sistema?</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_6" class="foldclosed" onClick="show_folder('1_6')" style="POSITION: absolute">+</span> <span id="hide1_6" class="foldopened" onClick="hide_folder('1_6')">-</span>
+<span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">6 - Diagramas de Caso de Uso de Sistema</span>
+<ul id="fold1_6" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_6_1" class="foldclosed" onClick="show_folder('1_6_1')" style="POSITION: absolute">+</span> <span id="hide1_6_1" class="foldopened" onClick="hide_folder('1_6_1')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">O que &#xe9;</span>
+<ul id="fold1_6_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Similar ao modelo de caso de uso essencial</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Inclui elementos tecnol&#xf3;gicos em alto n;ivel</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_6_2" class="foldclosed" onClick="show_folder('1_6_2')" style="POSITION: absolute">+</span> <span id="hide1_6_2" class="foldopened" onClick="hide_folder('1_6_2')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Diagrama</span>
+<ul id="fold1_6_2" style="POSITION: relative; VISIBILITY: visible;"><li><a href="ProcessoDeModelagemDeCasosDeUso_3309169486307550859.png" target="_blank"><span class=l>~</span>&nbsp;<span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">ProcessoDeModelagemDeCasosDeUso_3309169486307550859.png</span>
+</a>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_7" class="foldclosed" onClick="show_folder('1_7')" style="POSITION: absolute">+</span> <span id="hide1_7" class="foldopened" onClick="hide_folder('1_7')">-</span>
+<span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">7 - Casos de Uso de Sistema</span>
+<ul id="fold1_7" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_7_1" class="foldclosed" onClick="show_folder('1_7_1')" style="POSITION: absolute">+</span> <span id="hide1_7_1" class="foldopened" onClick="hide_folder('1_7_1')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">O que &#xe9;</span>
+<ul id="fold1_7_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">UMA EVOLU&#xc7;&#xc3;O DOS CASOS DE USO ESSENCIAIS</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">UM CDUE pode ser quebrado em alguns CDUS</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_7_2" class="foldclosed" onClick="show_folder('1_7_2')" style="POSITION: absolute">+</span> <span id="hide1_7_2" class="foldopened" onClick="hide_folder('1_7_2')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Deve conter</span>
+<ul id="fold1_7_2" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Nome</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Identificador (opcional)</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Descri&#xe7;&#xe3;o (opciona)</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Objetivo (opcional)</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Pr&#xe9;-Condi&#xe7;&#xf5;es (opcional)</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">P&#xf3;s-Condi&#xe7;&#xf5;es (opcional)</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Fluxo Principal</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Fluxos Alternativos</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_7_3" class="foldclosed" onClick="show_folder('1_7_3')" style="POSITION: absolute">+</span> <span id="hide1_7_3" class="foldopened" onClick="hide_folder('1_7_3')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Exemplo</span>
+<ul id="fold1_7_3" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_7_3_1" class="foldclosed" onClick="show_folder('1_7_3_1')" style="POSITION: absolute">+</span> <span id="hide1_7_3_1" class="foldopened" onClick="hide_folder('1_7_3_1')">-</span>
+<span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Informal</span>
+<ul id="fold1_7_3_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;font-family: SansSerif, sans-serif; ">
+    <div>
+      <div class="chapter">
+        <div class="section">
+          <div class="section">
+            <div class="miscfigure">
+              <div class="miscfigure-informalexample">
+                <div class="informaltable">
+                  <table width="100%" border="1">
+                    <tr valign="top">
+                      <td align="left" width="100%" class="td">
+                        <p class="table-para">
+                          <b>Nome</b>: Enroll in Seminar
+                        </p>
+                        <p class="table-para">
+                          <b class="bold">Identificador</b>: UC 17
+                        </p>
+                        <p class="table-para">
+                          <b>Fluxo Principal:</b>
+                        </p>
+                        <ul class="itemizedlist">
+                          <li class="first-listitem">
+                            <p class="table-para">
+                              Aluno entra seu nome e número de matricula
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              Sistema verifica a eligibilidade do aluno para 
+                              matricula no seminário. Se não for elegível, 
+                              aluno é informado e CDU termina.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              Sistema mostra a lista de seminários disponíveis.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              Estudante escolhe um seminário e decide se irá 
+                              se matricular.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              Sistema valida se o aluno é elegível para 
+                              matricular-se no seminário escolhido. Se não 
+                              for, é pedido que esolha outro.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              Sistema valida se o seminário se encaixa na 
+                              agenda do aluno.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              Sistema calcula e mostra as taxas.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              Aluno verifica o custo e indixa se deseja se 
+                              matricular ou não
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              Sistema matricula aluno no seminário e registra 
+                              as taxas.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              Sistema imprime o recibo de matrícula.
+                            </p>
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </span>
+</li>
+</ul>
+</li>
+<li><span id="show1_7_3_2" class="foldclosed" onClick="show_folder('1_7_3_2')" style="POSITION: absolute">+</span> <span id="hide1_7_3_2" class="foldopened" onClick="hide_folder('1_7_3_2')">-</span>
+<span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Formal</span>
+<ul id="fold1_7_3_2" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;font-family: SansSerif, sans-serif; ">
+    <div>
+      <div class="chapter">
+        <div class="section">
+          <div class="section">
+            <div class="miscfigure">
+              <div class="miscfigure-informalexample">
+                <div class="informaltable">
+                  <table width="100%" border="1">
+                    <tr valign="top">
+                      <td align="left" width="100%" class="td">
+                        <p class="table-para">
+                          <b class="bold">Nome</b>: Matricular no Seminário
+                        </p>
+                        <p class="table-para">
+                          <b class="bold">Identificador</b> UC 17:
+                        </p>
+                        <p class="table-para">
+                          <b class="bold">Descrição</b>:
+                        </p>
+                        <p class="table-para">
+                          Matricular um aluno existente num seminário que 
+                          esteja elegível
+                        </p>
+                        <p class="table-para">
+                          <b class="bold">Pré-condições</b>:
+                        </p>
+                        <p class="table-para">
+                          O aluno está registrado na universidade.<br style="line-height: 1">
+                        </p>
+                        <p class="table-para">
+                          <b class="bold">Pós-condições</b>:<br style="line-height: 1">O aluno estará 
+                          matriculado no curso que deseja se estiver elegível 
+                          e se tiver vagas.
+                        </p>
+                        <p class="table-para">
+                          <b class="bold">Fluxo Principal</b>:
+                        </p>
+                        <ol class="orderedlist">
+                          <li class="first-listitem">
+                            O caso de uso inicia quando o aluno indica que 
+                            deseja se matricular no seminário.
+                          </li>
+                          <li class="first-listitem">
+                            <p class="table-para">
+                              O aluno entra seu nome e matrícula no sistema 
+                              via <i><b>UI23 Tela de Login</b></i>.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              O Sistema verifica se o aluno é ellegível para 
+                              matrícula nos seminários na universidade de 
+                              acordo com a regra de negócio <i><b>RN129 
+                              Determinar elegibilidade para matrícula</b></i>. 
+                              [<i><b>Fluxo alternativo A</b></i>]
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              O sistema mostra UI32 Tela de Seleção de 
+                              Seminário, que indica a lista de seminários 
+                              dispníveis.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              O aluno indica o seminárqui que deseja se 
+                              matricular.[<b>Fluxo <i>alternativo B</i></b><i>: O 
+                              Aluno decide não se matricular</i>]
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            O sistema valida se o aluno é elegível para 
+                            matrícula em um semin;ario de acordo com a regra 
+                            de negócio <i><b>RN130 Determinar Eligibilidade 
+                            do ALuno para se Matricular no Seminário</b></i>. 
+                            [<i><b>Fluxo alternativo C</b></i>]
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              O Sistema valida se o seminário se enquadra na 
+                              agenda existente do aluno de acordo com a regra 
+                              de negócio <i><b>BR143 Validar Agenda do Aluno</b></i>.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              O Sistema calcula as taxas para o seminário 
+                              baseado nas taxas publicadas no catálogo de 
+                              cursos, aplicar as taxas do aluno e aplicar 
+                              impostos, Aplicar <i><b>RN180 Calcular Taxas do 
+                              ALuno</b></i> e <i><b>BR45 Calcular Impostos 
+                              para o Seminário</b></i>.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              O Sistema mostra as taxas via UI33 Mostrar Taxas 
+                              do Seminário.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            O Sistema pede ao aluno sua confirmação  de 
+                            matrícula no seminário.
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              O Aluno indica que deseja se matricular no 
+                              seminário.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              O sistema matriculao aluno no seminário.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              O sistema informa ao aluno que a matrícula foi 
+                              um sucesso via <b>UI88 Sumário de Matrícula em 
+                              Seminário</b>
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              O sistema cobra o estudante pelo seminário, de 
+                              acordo com a regra de negocio <i><b>RN100 Cobrar 
+                              aluno pelo seminário</b></i>.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              O sistema pede que aluno se o aluno quer 
+                              imprimir o comprovante de matrícula
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              O aluno indica que deseja imprimir o comprovante
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              O sistema imprime o comprovante de matrícula <b>UI89 
+                              Relatório de Sumário de Matrícula</b>.
+                            </p>
+                          </li>
+                          <li class="listitem">
+                            <p class="table-para">
+                              O caso de uso termina quando o aluno pega o 
+                              comprovante impresso.
+                            </p>
+                          </li>
+                        </ol>
+                        <p class="table-para">
+                          <b class="bold">Fluxo Alternativo A</b>: O aluno não é elegível 
+                          para matricula nos seminários
+                        </p>
+                        <p class="table-para">
+                          A.3. O secretário determina que o aluno não é 
+                          elegível para matricular-se no seminário.
+                        </p>
+                        <p class="table-para">
+                          A.4. O secretário informa que aluno não é elegíevl 
+                          para matrícula.
+                        </p>
+                        <p class="table-para">
+                          A.5. O caso de uso termina.
+                        </p>
+                        <p class="table-para">
+                          <b class="bold">Fluxo Alternativo B</b>: O aluno decide se não se 
+                          matricula em um seminário disponível
+                        </p>
+                        <p class="table-para">
+                          B.5. O aluno vê a lista de seminários e não vê o que 
+                          deseja se matricular.
+                        </p>
+                        <p class="table-para">
+                          B.6. O caso de uso termina.
+                        </p>
+                        <p class="table-para">
+                          <b class="bold">Fluxo Alternativo C</b>: O aluno não tem os 
+                          pré-requisitos
+                        </p>
+                        <p class="table-para">
+                          C.6. O secretário determina se o aluno não é 
+                          elegível para matrícula no seminário escolhido.
+                        </p>
+                        <p class="table-para">
+                          C.7. O secretário informa ao aluno que ele não 
+                          possui os pré-requisitos
+                        </p>
+                        <p class="table-para">
+                          C.8. O secretário informa ao aluno sobre os 
+                          pré-requisitos que precisa.
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </span>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_7_4" class="foldclosed" onClick="show_folder('1_7_4')" style="POSITION: absolute">+</span> <span id="hide1_7_4" class="foldopened" onClick="hide_folder('1_7_4')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Recomenda&#xe7;&#xf5;es</span>
+<ul id="fold1_7_4" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">1 - Usar voz ativa nos passos do CDUS</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">2 - OFluxo Principal deve terminar com um termo de fechamento</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">3 - Pr&#xe9; e P&#xf3;s-condi&#xe7;&#xf5;es podem reduzir a decomposi&#xe7;&#xe3;o funcional</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_8" class="foldclosed" onClick="show_folder('1_8')" style="POSITION: absolute">+</span> <span id="hide1_8" class="foldopened" onClick="hide_folder('1_8')">-</span>
+<span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">8 - Fluxos Alternativos</span>
+<ul id="fold1_8" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_8_1" class="foldclosed" onClick="show_folder('1_8_1')" style="POSITION: absolute">+</span> <span id="hide1_8_1" class="foldopened" onClick="hide_folder('1_8_1')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Processo</span>
+<ul id="fold1_8_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">1 - Descrever brevemente a condi&#xe7;&#xe3;o</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">2 - Indicar que um fluxo alternativo existe no texto do fluxo principal</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">3 - Estabelecer uma numera&#xe7;&#xe3;o consistente</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">4 - Estabelecar um esquema de identifica&#xe7;&#xe3;o</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">5 - Terminar o fluxo alternativo</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">6 - Cada passo deve fazer apenas uma &#xfa;nica coisa</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">7 -  Focar nas quest&#xf5;es de neg&#xf3;cio</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">9 - Outros Tipos Casos de Uso</span>
+
+</li>
+<li><span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">10 - Comparando Casos de Uso</span>
+
+</li>
+
+</ul><SCRIPT type="text/javascript">
+fold_document();
+</SCRIPT>
+</body>
+</html>

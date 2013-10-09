@@ -1,0 +1,14 @@
+h1. Product Backlog - TEC
+
+h2. Lista de Tarefas
+
+* *T001* - Preparação ambiente
+* *T002* - Elicitação de Requisitos
+* *T003* - Modelagem de Casos de Uso Essenciais
+* *T004* - E por aí vai...
+
+
+
+
+
+

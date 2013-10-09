@@ -1,0 +1,71 @@
+h1. IPSOO 2013-01 - Especificação de Requisitos
+
+h2. Índice
+
+{toc}
+
+h2. Regras
+
+* Trabalho EM DUPLA
+* As tarefas devem ser "COMMITADAS" EM um repositório GIT
+* O arquivo do projeto eclipse *DEVE TER O NOME NO SEGUINTE PADRÃO*:
+@dcoo_projeto_n1_joaozinho_mariazinha@
+* Os artefatos serão modelados de acordo com o Método visto em aula usando o Eclipse 
+
+h2. Escopo do Trabalho
+
+O que será pedido no trabalho
+
+h3. Especificação de requisitos (Software Requirements Specification)
+
+* *Requisitos Funcionais*
+* *Requisitos Não-Funcionais*
+* *Requisitos Padrão FURPS*
+
+h3. Gerência de Projeto
+
+* *Planejamento e execução de Tarefas*
+
+h3. Gerência de Configuração
+
+* *Identificação de Itens de Configuração*
+* *Gerenciamento de ambiente*
+* *Gerenciamento de Mudanças*
+* *Rastreabilidade de Tarefas e Artefatos*
+
+h3. Casos de Uso
+
+* *Casos de Uso Essenciais*
+** *Requisitos Complementares*
+** *Regras de Negócio*
+* *Casos de Uso de Sistema*
+** *Prototipação de Telas*
+
+h2. Artefatos Pedidos 
+
+Serão os mesmos trabalhados em aula, de acordo com o projeto desenvolvido em conjunto *ipsoo_exebd04_tec_nilseu* 
+
+* *Backlog* com o planejamento das tarefas
+* *Repositório GIT* com a execução das tarefas planejadas
+* *Diagrama de Caso de Uso Essencial* contendo *TODOS* os Casos de Uso encontrados  
+* *Arquivos de Casos de Uso Essenciais Textuais*
+* *Pastas e Arquivos de Casos de Uso de Sistema*
+** Caso de Uso *FORMAL* com fluxo principal e fluxos alternaticos
+** Pelo menos *TRÊS Casos de Uso de Sistema* com:
+** Regras de Negócio
+** Protótipos de Telas (Feitos 
+** Requisitos Não-Funcionais Específicos
+
+h2. Universo de Discurso 
+
+Extraído do livro *Sistemas de Banco de Dados - Projeto, Implementação e Administração, 8a Ed.* de Peter Rob e Carlos Coronel. 
+Os arquivos do universo de discurso encontram-se na pasta *engenharia/requisitos/elicitacao* deste projeto: 
+*Exercício 10 - Sistema de Rastreamento Tiny College*.
+
+
+h2. Notas e Referências
+
+* *Larman, Craig. Aplicando UML e Padrões, 3a Ed.*
+
+
+
