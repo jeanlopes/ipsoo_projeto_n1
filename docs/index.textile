@@ -49,8 +49,11 @@ Serão os mesmos trabalhados em aula, de acordo com o projeto desenvolvido em co
 * *Backlog* com o planejamento das tarefas
 * *Repositório GIT* com a execução das tarefas planejadas
 * *Diagrama de Caso de Uso Essencial* contendo *TODOS* os Casos de Uso encontrados  
+
 * *Arquivos de Casos de Uso Essenciais Textuais*
 * *Pastas e Arquivos de Casos de Uso de Sistema*
+qual a diferença entre esses dois?
+
 ** Caso de Uso *FORMAL* com fluxo principal e fluxos alternaticos
 ** Pelo menos *TRÊS Casos de Uso de Sistema* com:
 ** Regras de Negócio

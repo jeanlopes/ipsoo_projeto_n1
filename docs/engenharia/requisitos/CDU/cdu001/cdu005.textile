@@ -1,0 +1,27 @@
+h1. CDU005 - Registro de utilização de peças
+
+h2. Descrição
+
+Um *gerente do departamento de peças* preenche este
+formulário que está vinculado ao registro de manutenção
+de um veículo
+
+h2. Pré-condições
+
+* Precisa existir um registro de manutenção necessitando
+de peças para a baixa no estoque.
+
+* Precisa ser preenchido pelo *gerente do departamento 
+de peças*
+
+h2. Pós-condições
+
+* A quantidade de peças tem que diminuir no estoque
+
+h2. Fluxo principal
+
+1 - O *gerente do departamento de peças* vincula
+o novo formulário no registro de manutenção existente
+2 - O mesmo dá a baixa nas peças e faz a descrição
+detalhada
+ 

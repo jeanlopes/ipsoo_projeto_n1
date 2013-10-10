@@ -10,7 +10,9 @@ Criar repositório no github, repositório git local e vincula-los
 Requisitos: git, github, visual-studio meia boca.
 
 
-* *T003* - Modelagem de Casos de Uso Essenciais
+* *T003* - Modelagem de Casos de Uso textuais e diagrama UML
+
+* *T004* - Protótipo de telas no pencil
 
 
 

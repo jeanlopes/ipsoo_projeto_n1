@@ -1,1 +1,65 @@
-h1. CDU001 - Nome do Caso de Uso de Sistema
+h1. CDU001 - Registro de Veículos
+
+h2. Descrição
+
+O departamento reserva um veículo para um docente viajar.
+
+h2. Pré-condições
+
+* Apenas o departamento pode criar reservas para docentes
+* As datas de reserva precisam ser maiores que a data corrente.
+* Pelo menos um carro deve estar disponível e em pleno
+funcionamento para que ele possa efetuar o cadastro com sucesso.
+
+
+h2. Pós-condições
+
+* O carro estará reservado para o docente indicado no cadastro
+após a procedencia do registro.
+* Ninugém mais poderá reservar aquele carro no dado período
+da reserva
+* O carro terá de sujeitar-se a rotinas de verificação após
+o uso
+* O caso do carro estar reservado, implica em fazer uso dele
+na data especificada durante o registro
+
+h2. Fluxo Principal
+
+1 - O *responsável pelo Departamento* se identifica
+2 - O mesmo insere a data de quando o veículo permanecerá
+reservado.
+3 - O mesmo verifica quais são os veículos disponíveis, e se
+estiver algum veículo disponível de sua escolha, escolhe ele,
+tornando-o assim um veículo indisponível para as demais
+reservas na mesma data de registro
+4 - O mesmo escolhe o *docente* que ficará responsável pela
+viagem.
+5 - O mesmo efetua o registro
+6 - O CDU termina.
+
+h2. Fluxo Alternativo
+
+nenhum
+
+h2. Requisitos não funcionais
+
+nenhum
+
+h2. Questões em aberto.
+
+1 - Será aplicado algum tipo de multa em caso de desistência?
+2 - Será aplicada alguma verificação e vistoria na mecânica 
+do veículo períodos antes da viagem?
+3 - Será analisada a rota da viagem para evitar riscos
+desnecessários? (Ex.: furacões, buracos na pista, 
+assaltos de facções criminosas)
+4 - No caso da multa ser aplicada, ela irá para o docente ou
+departamento?
+5 - No caso da multa ser aplicada, quais serão os métodos de
+pagamento da multa?
+6 - No caso da multa ser aplicada, para onde será repassada
+a verba da multa?
+7 - No caso de ser aplicada vistoria e o carro apresentar falha
+mecânica, quais serão os prazos e procedimentos aplicados para
+a escolha de outro veículo ou desistência da viagem, em caso
+de não haverem mais veículos disponíveis?

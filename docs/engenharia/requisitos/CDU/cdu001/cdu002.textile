@@ -1,0 +1,52 @@
+h1. CDU002 - Formulário de Conclusão de viagens
+
+h2. Descrição
+
+Ao regressar de sua viagem, o docente fica incumbido
+de assinar um formulário de conclusão de viagens, o
+qual o seu departamento da faculdade, que é 
+responsável pelo docente terá de assinar.
+
+h2. Pré-condições
+
+* O preenchimento do formulário ficará a cargo do
+docente.
+
+* O preenchimento do formulário apenas poderá ser
+realizado após a viagem do docente.
+
+h2. Pós-condições
+
+* As queixas de manutenções implicarão na abertura
+de novos registros de manutenções.
+
+* O docente deve devolver o carro.
+
+* Se o carro não for liberado para manutenção, deve
+ser novamente disponibilizado para reserva.
+
+h2. Fluxo Principal
+
+1 - O *docente* insere sua identificação
+2 - O mesmo insere a identificação do veículo
+3 - O mesmo insere a leitura do hodômetro de início
+e de fim do percurso
+4 - Se hoverem, o mesmo declara as queixas de 
+nessecidade de manutenção do veículo
+5 - É informado a quantidade de litros adquiridos
+para ou durante a viagem
+6 - O mesmo informa o número
+do cartão de crédito da faculdade
+7 - O *docente* anexa todos os recibos ao formulário
+8 - O *responsável pelo departamento* assina o
+formulário
+9 - O Formulário é submetido ao sistema
+10 - O CDU termina.
+
+h2. Fluxo Alternativo
+
+nenhum
+
+h2. Questões em aberto.
+
+nenhuma

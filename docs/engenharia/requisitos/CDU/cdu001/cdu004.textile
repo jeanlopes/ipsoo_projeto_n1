@@ -1,0 +1,30 @@
+h1. CDU004 - Registro de Saída de Veículos
+
+h2. Descrição
+
+Na hora de obter o veículo reservado afim de
+partir para a viagem, o *docente* assina o formulário
+de saída.
+
+h2. Pré-condições
+
+* O formulário deverá ser assinado apenas pelo docente
+que ficará responsável pelo veículo
+* O docente deve retirar o veículo após submeter o 
+formulário para evitar fraudes.
+* O *Funcionário da VLMD* deve assinar também o formulário
+de saída
+
+h2. Pós-condições
+
+* O *docente* deve levar consigo um formulário de conclusão
+de viagem quando sair
+
+h2. Fluxo Principal
+
+1 - O *docente assina o fomulário*
+2 - O *Fucionário da VLMD* assina também o formulário
+3 - O formulário é submetido
+4 - O CDU termina.
+
+ 

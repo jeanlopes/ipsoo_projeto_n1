@@ -1,0 +1,45 @@
+h1. CDU003 - Registro de Manutenção de Veículos
+
+h2. Descrição
+
+Um funcionário VLMD abre um registro para cadastrar a 
+manutenção que virá a ser feita em um veículo e assinada
+por um mecânico autorizado.
+
+h2. Pré-condições
+
+* Apenas o funcionário pode iniciar um registro de 
+manutenção
+* A Data de entrada deve ser maior que a data atual
+* A Manutenção deve estar vinculada a um dado carro
+
+h2. Pós-condições
+
+* O Formulário precisa estar assinado pelo mecânico
+autorizado.
+
+h2. Fluxo Principal
+
+1 - O *Funcionário VLMD* inicia o procedimento de registro
+com suas credenciais
+2 - O mesmo insere uma breve descrição da manutenção
+3 - O mesmo insere a data de entrada
+4 - O mesmo insere a data de conclusão
+5 - O mesmo vincula a manutenção a um mecânico autorizado
+6 - Após a manutenção, durante a data da conclusão, o
+*mecânico* autorizado assina a entrega e realização da 
+manutenção
+
+h2. Fluxo Alternativo
+
+nenhum
+
+h2. Requisitos não funcionais
+
+*O Login do *Funcionário VLMD* insere suas credenciais para
+iniciar o procedimento de registro.
+
+
+h2. Questões em aberto
+
+nenhuma
