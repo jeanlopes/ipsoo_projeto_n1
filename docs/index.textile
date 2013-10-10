@@ -43,7 +43,8 @@ h3. Casos de Uso
 
 h2. Artefatos Pedidos 
 
-Serão os mesmos trabalhados em aula, de acordo com o projeto desenvolvido em conjunto *ipsoo_exebd04_tec_nilseu* 
+Serão os mesmos trabalhados em aula, de acordo com o projeto desenvolvido em conjunto 
+*ipsoo_exebd04_tec_nilseu* 
 
 * *Backlog* com o planejamento das tarefas
 * *Repositório GIT* com a execução das tarefas planejadas
@@ -58,8 +59,9 @@ Serão os mesmos trabalhados em aula, de acordo com o projeto desenvolvido em co
 
 h2. Universo de Discurso 
 
-Extraído do livro *Sistemas de Banco de Dados - Projeto, Implementação e Administração, 8a Ed.* de Peter Rob e Carlos Coronel. 
-Os arquivos do universo de discurso encontram-se na pasta *engenharia/requisitos/elicitacao* deste projeto: 
+Extraído do livro *Sistemas de Banco de Dados - Projeto, Implementação e Administração, 
+8a Ed.* de Peter Rob e Carlos Coronel. Os arquivos do universo de discurso encontram-se 
+na pasta *engenharia/requisitos/elicitacao* deste projeto: 
 *Exercício 10 - Sistema de Rastreamento Tiny College*.
 
 

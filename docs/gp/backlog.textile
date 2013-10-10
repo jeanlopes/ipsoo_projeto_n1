@@ -2,10 +2,17 @@ h1. Product Backlog - TEC
 
 h2. Lista de Tarefas
 
-* *T001* - Preparação ambiente
+* *T001* - Preparação ambiente 
+Criar repositório no github, repositório git local e vincula-los
+
+
 * *T002* - Elicitação de Requisitos
+Requisitos: git, github, visual-studio meia boca.
+
+
 * *T003* - Modelagem de Casos de Uso Essenciais
-* *T004* - E por aí vai...
+
+
 
 
 
