@@ -7,17 +7,9 @@ Criar repositório no github, repositório git local e vincula-los
 
 
 * *T002* - Elicitação de Requisitos
-Requisitos: git, github, visual-studio meia boca.
+Requisitos: git, github, eclipse meia boca.
 
 
 * *T003* - Modelagem de Casos de Uso textuais e diagrama UML
 
 * *T004* - Protótipo de telas no pencil
-
-
-
-
-
-
-
-

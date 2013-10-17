@@ -24,7 +24,8 @@ h2. Fluxo Principal
 
 1 - O *docente assina o fomulário*
 2 - O *Fucionário da VLMD* assina também o formulário
-3 - O formulário é submetido
-4 - O CDU termina.
+3 - É informado o Veículo em questão
+4 - O formulário é submetido
+5 - O CDU termina.
 
  
